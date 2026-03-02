@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ЭВАКУАТОР 24/7 — Профессиональная эвакуация</title>
+  <meta name="description" content="Профессиональный эвакуатор 24/7. Быстрый выезд, все категории ТС. Звоните: +7 702 156 5058" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-card: #161616;
+      --gold: #f59e0b;
+      --gold-dark: #d97706;
+      --gold-light: #fbbf24;
+      --white: #ffffff;
+      --gray: #9ca3af;
+      --gray-light: #d1d5db;
+      --border: rgba(245,158,11,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.02em;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(10,10,10,0.98);
+      box-shadow: 0 4px 30px rgba(245,158,11,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: #000;
+      box-shadow: 0 0 20px rgba(245,158,11,0.4);
+    }
+
+    .logo span { color: var(--gold); }
+
+    .header-phone {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      transition: color 0.3s;
+    }
+
+    .header-phone:hover { color: var(--gold-light); }
+
+    .header-phone i { font-size: 0.9rem; }
+
+    nav { display: flex; gap: 2rem; }
+
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    nav a:hover { color: var(--gold); }
+    nav a:hover::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ─── MOBILE NAV ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-nav a:last-child { border-bottom: none; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0 2rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.12); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(10,10,10,0.92) 0%,
+        rgba(10,10,10,0.75) 50%,
+        rgba(10,10,10,0.88) 100%
+      );
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 8s linear infinite;
+    }
+
+    @keyframes gridMove {
+      from { background-position: 0 0; }
+      to { background-position: 60px 60px; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.35);
+      border-radius: 50px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 0.8s ease both;
+    }
+
+    .hero-badge i { font-size: 0.75rem; animation: pulse 2s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    .hero-title .gold { color: var(--gold); }
+
+    .hero-title .outline {
+      -webkit-text-stroke: 2px var(--gold);
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--gray-light);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease 0.6s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 25px rgba(245,158,11,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 35px rgba(245,158,11,0.5);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 3rem;
+      z-index: 2;
+      animation: fadeInUp 0.8s ease 0.8s both;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: fadeIn 1s ease 1s both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.3; transform: scaleY(0.5); }
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 6rem 2rem; }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-tag::before, .section-tag::after {
+      content: '';
+      display: block;
+      width: 30px; height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-title .gold { color: var(--gold); }
+
+    .section-desc {
+      color: var(--gray);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ─── SERVICES ─── */
+    .services { background: var(--bg-secondary); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-card:hover {
+      border-color: rgba(245,158,11,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(245,158,11,0.08);
+    }
+
+    .service-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(245,158,11,0.1));
+      box-shadow: 0 0 20px rgba(245,158,11,0.2);
+    }
+
+    .service-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      color: var(--white);
+    }
+
+    .service-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .service-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 1.25rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover .service-img { opacity: 1; }
+
+    /* ─── WHY US ─── */
+    .why-us { background: var(--bg-primary); position: relative; overflow: hidden; }
+
+    .why-us::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .why-item {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245,158,11,0.04), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .why-item:hover { border-color: rgba(245,158,11,0.35); transform: translateY(-4px); }
+    .why-item:hover::after { opacity: 1; }
+
+    .why-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .why-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .why-title {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-desc {
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-it-works { background: var(--bg-secondary); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: calc(16.67% + 1rem);
+      right: calc(16.67% + 1rem);
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark), var(--gold));
+      opacity: 0.3;
+    }
+
+    .step {
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+
+    .step-num {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #000;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 30px rgba(245,158,11,0.35);
+      transition: all 0.3s;
+    }
+
+    .step:hover .step-num {
+      transform: scale(1.1);
+      box-shadow: 0 0 50px rgba(245,158,11,0.5);
+    }
+
+    .step-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .step-icon {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery { background: var(--bg-primary); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img { transform: scale(1.07); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay span {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { background: var(--bg-secondary); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(245,158,11,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .quote-icon {
+      font-size: 3rem;
+      color: rgba(245,158,11,0.15);
+      line-height: 1;
+      margin-bottom: 1rem;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-text {
+      color: var(--gray-light);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .stars i { color: var(--gold); font-size: 0.9rem; }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .author-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .author-role {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    /* ─── CTA / CONTACT ─── */
+    .cta-section {
+      background: var(--bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(245,158,11,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(245,158,11,0.06) 0%, transparent 60%);
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .cta-title .gold { color: var(--gold); }
+
+    .cta-desc {
+      color: var(--gray);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .cta-phone::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .cta-phone:hover::after { transform: scaleX(1); }
+    .cta-phone:hover { color: var(--gold-light); text-shadow: 0 0 30px rgba(245,158,11,0.4); }
+
+    .cta-phone-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: #000;
+      animation: phonePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes phonePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+      50% { box-shadow: 0 0 0 15px rgba(245,158,11,0); }
+    }
+
+    .cta-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+
+    .cta-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-light);
+      font-size: 0.9rem;
+    }
+
+    .cta-info-item i { color: var(--gold); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080808;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .logo { margin-bottom: 1rem; }
+
+    .footer-desc {
+      color: var(--gray);
+      font-size: 0.875rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(245,158,11,0.1);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      font-size: 0.875rem;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a::before {
+      content: '';
+      display: block;
+      width: 6px; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+    .footer-links a:hover::before { width: 12px; }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-contact-item i {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-item span {
+      color: var(--gray);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom span { color: var(--gold); }
+
+    /* ─── FLOATING CALL BUTTON ─── */
+    .float-call {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.9rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 25px rgba(245,158,11,0.5);
+      transition: all 0.3s;
+      animation: floatIn 0.5s ease 1s both;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .float-call:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 35px rgba(245,158,11,0.6);
+    }
+
+    .float-call i { font-size: 1.1rem; animation: phonePulse 2s infinite; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ─── DIVIDER ─── */
+    .gold-divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+      border-radius: 2px;
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .header-phone { font-size: 0.95rem; }
+
+      section { padding: 4rem 1.25rem; }
+
+      .hero-stats {
+        gap: 1.5rem;
+        bottom: 2rem;
+      }
+
+      .stat-num { font-size: 1.5rem; }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .steps::before { display: none; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+      }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .float-call { display: flex; }
+
+      .cta-info { gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
+
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; }
+
+      .hero-stats { gap: 1rem; }
+      .stat-num { font-size: 1.3rem; }
+      .stat-label { font-size: 0.65rem; }
+    }
+
+    /* ─── COUNTER ANIMATION ─── */
+    .count-up { display: inline-block; }
+
+    /* ─── LOADING SCREEN ─── */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-primary);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader.hidden { opacity: 0; visibility: hidden; }
+
+    .loader-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+
+    .loader-bar {
+      width: 200px; height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+      border-radius: 2px;
+      animation: loadFill 1.2s ease forwards;
+    }
+
+    @keyframes loadFill {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-logo"><i class="fas fa-truck-moving"></i> ЭВАКУАТОР</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="fas fa-truck-moving"></i></div>
+      ЭВАКУА<span>ТОР</span>
+    </a>
+
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#why-us">О нас</a>
+      <a href="#how">Как работаем</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+
+    <a href="tel:+77021565058" class="header-phone">
+      <i class="fas fa-phone"></i>
+      +7 702 156 5058
+    </a>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services" onclick="toggleMenu()">Услуги</a>
+    <a href="#why-us" onclick="toggleMenu()">О нас</a>
+    <a href="#how" onclick="toggleMenu()">Как работаем</a>
+    <a href="#gallery" onclick="toggleMenu()">Галерея</a>
+    <a href="#contact" onclick="toggleMenu()">Контакты</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-circle"></i>
+        Работаем круглосуточно
+      </div>
+
+      <h1 class="hero-title">
+        ЭВАКУА<span class="gold">ТОР</span><br>
+        <span class="outline">24/7</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Профессиональная эвакуация автомобилей любых категорий.<br>
+        Быстрый выезд — от 15 минут. Работаем без выходных.
+      </p>
+
+      <div class="hero-actions">
+        <a href="tel:+77021565058" class="btn-primary">
+          <i class="fas fa-phone"></i>
+          Вызвать эвакуатор
+        </a>
+        <a href="#services" class="btn-outline">
+          <i class="fas fa-list"></i>
+          Наши услуги
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num"><span class="count-up" data-target="5000">0</span>+</div>
+        <div class="stat-label">Выполнено заявок</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count-up" data-target="15">0</span> мин</div>
+        <div class="stat-label">Время выезда</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count-up" data-target="8">0</span> лет</div>
+        <div class="stat-label">Опыт работы</div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Наши услуги</div>
+        <h2 class="section-title">Эвакуация <span class="gold">всех категорий</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">Мы обеспечиваем профессиональную эвакуацию транспортных средств любого класса и размера — от мотоциклов до тяжёлой спецтехники.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="service-icon"><i class="fas fa-car"></i></div>
+          <h3 class="service-title">Легковые автомобили</h3>
+          <p class="service-desc">Эвакуация легковых авто всех марок и моделей. Бережная погрузка, надёжная фиксация, доставка в любую точку.</p>
+          <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80" alt="Легковой автомобиль" class="service-img" loading="lazy" />
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="fas fa-motorcycle"></i></div>
+          <h3 class="service-title">Мотоциклы и скутеры</h3>
+          <p class="service-desc">Специальное оборудование для мотоциклов, квадроциклов и скутеров. Перевозка без повреждений.</p>
+          <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80" alt="Мотоцикл" class="service-img" loading="lazy" />
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i class="fas fa-truck"></i></div>
+          <h3 class="service-title">Грузовые автомобили</h3>
+          <p class="service-desc">Эвакуация грузовиков, микроавтобусов и коммерческого транспорта. Мощные тягачи для любого груза.</p>
+          <img src="https://images.unsplash.com/photo-1600712242805-5f78671b24da?w=600&q=80" alt="Грузовик" class="service-img" loading="lazy" />
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="fas fa-tractor"></i></div>
+          <h3 class="service-title">Спецтехника</h3>
+          <p class="service-desc">Перевозка строительной и сельскохозяйственной техники, экскаваторов, погрузчиков и другого оборудования.</p>
+          <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&q=80" alt="Спецтехника" class="service-img" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Почему мы</div>
+        <h2 class="section-title">Наши <span class="gold">преимущества</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">Мы — профессионалы с многолетним опытом, которым доверяют тысячи клиентов по всему городу.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-item" data-aos="zoom-in" data-aos-delay="0">
+          <i class="fas fa-clock why-icon"></i>
+          <div class="why-num">24/7</div>
+          <h3 class="why-title">Круглосуточно</h3>
+          <p class="why-desc">Работаем без выходных и праздников. В любое время суток мы готовы прийти на помощь.</p>
+        </div>
+
+        <div class="why-item" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-bolt why-icon"></i>
+          <div class="why-num">15</div>
+          <h3 class="why-title">Минут до выезда</h3>
+          <p class="why-desc">Наши экипажи всегда в боевой готовности. Минимальное время ожидания в любом районе.</p>
+        </div>
+
+        <div class="why-item" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-shield-halved why-icon"></i>
+          <div class="why-num">100%</div>
+          <h3 class="why-title">Безопасность</h3>
+          <p class="why-desc">Профессиональное оборудование и опытные водители гарантируют сохранность вашего ТС.</p>
+        </div>
+
+        <div class="why-item" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-tags why-icon"></i>
+          <div class="why-num">✓</div>
+          <h3 class="why-title">Честные цены</h3>
+          <p class="why-desc">Фиксированные тарифы без скрытых наценок. Стоимость озвучивается до начала работ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Процесс работы</div>
+        <h2 class="section-title">Как мы <span class="gold">работаем</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">Всего три простых шага — и ваш автомобиль в безопасности.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step" data-aos="fade-up" data-aos-delay="0">
+          <div class="step-num">01</div>
+          <i class="fas fa-phone step-icon"></i>
+          <h3 class="step-title">Позвоните нам</h3>
+          <p class="step-desc">Позвоните по номеру +7 702 156 5058 или оставьте заявку онлайн. Оператор примет вызов и уточнит детали.</p>
+        </div>
+
+        <div class="step" data-aos="fade-up" data-aos-delay="150">
+          <div class="step-num">02</div>
+          <i class="fas fa-location-dot step-icon"></i>
+          <h3 class="step-title">Мы приедем</h3>
+          <p class="step-desc">Ближайший свободный экипаж выедет к вам. Среднее время прибытия — 15–30 минут.</p>
+        </div>
+
+        <div class="step" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-num">03</div>
+          <i class="fas fa-truck-moving step-icon"></i>
+          <h3 class="step-title">Эвакуируем</h3>
+          <p class="step-desc">Профессионально погрузим и доставим ваш автомобиль в нужное место. Быстро, аккуратно, надёжно.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Наши работы</div>
+        <h2 class="section-title">Фото<span class="gold">галерея</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">Реальные фотографии нашей работы — эвакуация автомобилей всех категорий.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Эвакуатор на работе" loading="lazy" />
+          <div class="gallery-overlay"><span>Эвакуатор 24/7</span></div>
+        </div>
+
+        <div class="gallery-item" data-aos="fade-left">
+          <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80" alt="Автомобиль на дороге" loading="lazy" />
+          <div class="gallery-overlay"><span>Помощь на дороге</span></div>
+        </div>
+
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80" alt="Легковой автомобиль" loading="lazy" />
+          <div class="gallery-overlay"><span>Легковые авто</span></div>
+        </div>
+
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
+          <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&q=80" alt="Спортивный автомобиль" loading="lazy" />
+          <div class="gallery-overlay"><span>Спортивные авто</span></div>
+        </div>
+
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1600712242805-5f78671b24da?w=600&q=80" alt="Грузовой транспорт" loading="lazy" />
+          <div class="gallery-overlay"><span>Грузовой транспорт</span></div>
+        </div>
+
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
+          <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80" alt="Автомобиль" loading="lazy" />
+          <div class="gallery-overlay"><span>Все категории ТС</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Отзывы клиентов</div>
+        <h2 class="section-title">Нам <span class="gold">доверяют</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">Более 5000 довольных клиентов уже воспользовались нашими услугами.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="quote-icon">"</div>
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">Позвонил в 2 часа ночи — машина заглохла посреди трассы. Приехали через 20 минут! Профессионалы своего дела. Всё сделали быстро и аккуратно. Очень доволен.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">АМ</div>
+            <div>
+              <div class="author-name">Алексей Морозов</div>
+              <div class="author-role">Владелец Toyota Camry</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="quote-icon">"</div>
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">Нужно было перевезти мотоцикл. Думал, будут проблемы, но ребята приехали со специальным оборудованием и всё сделали идеально. Цена адекватная, рекомендую!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">ДК</div>
+            <div>
+              <div class="author-name">Дмитрий Козлов</div>
+              <div class="author-role">Владелец Honda CBR</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="quote-icon">"</div>
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="testimonial-text">Попал в ДТП, нужна была срочная эвакуация. Команда приехала быстро, помогли оформить документы и доставили машину в сервис. Спасибо за профессионализм!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">НС</div>
+            <div>
+              <div class="author-name">Наталья Смирнова</div>
+              <div class="author-role">Владелец BMW X5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-inner" data-aos="fade-up">
+        <div class="section-tag" style="justify-content:center;">Связаться с нами</div>
+        <h2 class="cta-title">
+          Нужна помощь?<br>
+          <span class="gold">Звоните прямо сейчас!</span>
+        </h2>
+        <p class="cta-desc">
+          Наши операторы готовы принять ваш звонок в любое время суток.<br>
+          Выезд эвакуатора — от 15 минут после вашего звонка.
+        </p>
+
+        <a href="tel:+77021565058" class="cta-phone">
+          <div class="cta-phone-icon"><i class="fas fa-phone"></i></div>
+          +7 702 156 5058
+        </a>
+
+        <br />
+        <a href="tel:+77021565058" class="btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;">
+          <i class="fas fa-phone"></i>
+          Вызвать эвакуатор
+        </a>
+
+        <div class="cta-info">
+          <div class="cta-info-item">
+            <i class="fas fa-clock"></i>
+            <span>Работаем 24/7, без выходных</span>
+          </div>
+          <div class="cta-info-item">
+            <i class="fas fa-bolt"></i>
+            <span>Выезд от 15 минут</span>
+          </div>
+          <div class="cta-info-item">
+            <i class="fas fa-shield-halved"></i>
+            <span>Гарантия сохранности ТС</span>
+          </div>
+          <div class="cta-info-item">
+            <i class="fas fa-ruble-sign"></i>
+            <span>Честные фиксированные цены</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon"><i class="fas fa-truck-moving"></i></div>
+          ЭВАКУА<span>ТОР</span>
+        </a>
+        <p class="footer-desc">
+          Профессиональный эвакуатор 24/7. Быстрый выезд, опытные водители, надёжное оборудование. Работаем по всему городу и пригороду.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Услуги</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Эвакуация легковых авто</a></li>
+          <li><a href="#services">Эвакуация мотоциклов</a></li>
+          <li><a href="#services">Эвакуация грузовиков</a></li>
+          <li><a href="#services">Эвакуация спецтехники</a></li>
+          <li><a href="#services">Помощь при ДТП</a></li>
+          <li><a href="#services">Межгород</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Контакты</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span><a href="tel:+77021565058" style="color:var(--gold);">+7 702 156 5058</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Работаем круглосуточно,<br>7 дней в неделю</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-location-dot"></i>
+          <span>Выезд по всему городу<br>и пригороду</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-bolt"></i>
+          <span>Время прибытия: 15–30 мин</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Эвакуатор 24/7. Все права защищены.</p>
+      <p>Разработано с <span>♥</span> для вашей безопасности</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING CALL BUTTON -->
+  <a href="tel:+77021565058" class="float-call">
+    <i class="fas fa-phone"></i>
+    Вызвать эвакуатор
+  </a>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // Init AOS
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 60
+    });
+
+    // Loader
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.getElementById('loader').classList.add('hidden');
+      }, 1300);
+    });
+
+    // Sticky header
+    var header = document.getElementById('header');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      var nav = document.getElementById('mobileNav');
+      nav.classList.toggle('open');
+    }
+
+    // Close menu on outside click
+    document.addEventListener('click', function (e) {
+      var nav = document.getElementById('mobileNav');
+      var hamburger = document.getElementById('hamburger');
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+        nav.classList.remove('open');
+      }
+    });
+
+    // Counter animation
+    function animateCounters() {
+      var counters = document.querySelectorAll('.count-up');
+      counters.forEach(function (counter) {
+        var target = parseInt(counter.getAttribute('data-target'));
+        var duration = 2000;
+        var step = target / (duration / 16);
+        var current = 0;
+        var timer = setInterval(function () {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = Math.floor(current).toLocaleString('ru-RU');
+        }, 16);
+      });
+    }
+
+    // Trigger counters when hero is visible
+    var heroObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setTimeout(animateCounters, 800);
+          heroObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    var heroStats = document.querySelector('.hero-stats');
+    if (heroStats) heroObserver.observe(heroStats);
+
+    // Parallax on hero bg
+    window.addEventListener('scroll', function () {
+      var heroBg = document.querySelector('.hero-bg');
+      if (heroBg) {
+        var scrolled = window.pageYOffset;
+        heroBg.style.transform = 'scale(1.05) translateY(' + (scrolled * 0.3) + 'px)';
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          var offset = 70;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
